@@ -1,7 +1,7 @@
 package reservationapp;
 import java.util.Date;
 import java.text.DateFormat;
-import java.util.GregorianCalendar;
+import java.text.NumberFormat;
 
 public class Reservation
 {
@@ -39,7 +39,22 @@ public class Reservation
     {
         int arrivalInMS = (int) arrivalDate.getTime();
         int departureInMS = (int) departureDate.getTime();
-        int differenceInDays = (int) (departureInMS - arrivalInMS) / (1000* 60 * 60 * 24);
+        int differenceInDays = (int) (departureInMS - arrivalInMS) / (1000 * 60 * 60 * 24);
         return differenceInDays;
+    }
+    public double getTotalPrice()
+    {
+        return NIGHTLY_RATE * this.getNumOfNights();
+    }
+    @Override
+    public String toString()
+    {
+        NumberFormat currency = NumberFormat.getCurrencyInstance();
+        DateFormat displayDate = DateFormat.getDateInstance(DateFormat.FULL);
+        return "Arrival Date: " + displayDate.format(arrivalDate) + 
+                "\nDeparture Date: " + displayDate.format(departureDate) +
+                "\nPrice: " + currency.format(NIGHTLY_RATE) + " per night" +
+                "\nTotal price: " + currency.format(this.getTotalPrice()) +
+                " for " + this.getNumOfNights() + " nights";
     }
 }
