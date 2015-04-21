@@ -37,6 +37,9 @@ public class Reservation
     
     public int getNumOfNights()
     {
-        
+        int arrivalInMS = (int) arrivalDate.getTime();
+        int departureInMS = (int) departureDate.getTime();
+        int differenceInDays = (int) (departureInMS - arrivalInMS) / (1000* 60 * 60 * 24);
+        return differenceInDays;
     }
 }
