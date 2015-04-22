@@ -11,16 +11,17 @@ public class ReservationApp
         {
             int arrivalMonth = Validation.getInt("Enter the arrival month (1-12): ", 1, 12);
             int arrivalDay = Validation.getInt("Enter the arrival day (1-31): ", 1, 31);
-            int arrivalYear = Validation.getInt("Enter the arrival year: ", 2015, 2020);
+            int arrivalYear = Validation.getInt("Enter the arrival year: ", 0, 3000);
             System.out.println();
             
             int departureMonth = Validation.getInt("Enter the departure month (1-12): ", 1, 12);
             int departureDay = Validation.getInt("Enter the departure day (1-31): ", 1, 31);
-            int departureYear = Validation.getInt("Enter the departure year: ", 2015, 2020);
+            int departureYear = Validation.getInt("Enter the departure year: ", 0, 3000);
             System.out.println();
             
             GregorianCalendar calendarArrival = new GregorianCalendar(arrivalYear, arrivalMonth - 1, arrivalDay);
             GregorianCalendar calendarDeparture = new GregorianCalendar(departureYear, departureMonth - 1, departureDay);
+            
             
             Reservation myReservation = new Reservation(calendarArrival.getTime(), calendarDeparture.getTime());
             

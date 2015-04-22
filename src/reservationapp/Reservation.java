@@ -7,7 +7,7 @@ public class Reservation
 {
     private Date arrivalDate;
     private Date departureDate;
-    private Double NIGHTLY_RATE = 115.00;
+    private final double NIGHTLY_RATE = 115.00;
     
     public Reservation(Date arrivalDate, Date departureDate)
     {
@@ -37,10 +37,11 @@ public class Reservation
     
     public int getNumOfNights()
     {
-        int arrivalInMS = (int) arrivalDate.getTime();
-        int departureInMS = (int) departureDate.getTime();
-        int differenceInDays = (int) (departureInMS - arrivalInMS) / (1000 * 60 * 60 * 24);
-        return differenceInDays;
+        long arrivalInMS = arrivalDate.getTime();
+        long departureInMS = departureDate.getTime();
+        long differenceInDays = (departureInMS - arrivalInMS) / (1000 * 60 * 60 * 24);
+        int intDifference = (int) differenceInDays;
+        return intDifference;
     }
     public double getTotalPrice()
     {
