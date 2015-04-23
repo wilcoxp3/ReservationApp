@@ -8,6 +8,7 @@ public class Reservation
     private Date arrivalDate;
     private Date departureDate;
     private final double NIGHTLY_RATE = 115.00;
+    private final long MS_PER_DAY = 1000 * 60 * 60 * 24;
     
     public Reservation(Date arrivalDate, Date departureDate)
     {
@@ -39,7 +40,7 @@ public class Reservation
     {
         long arrivalInMS = arrivalDate.getTime();
         long departureInMS = departureDate.getTime();
-        long differenceInDays = (departureInMS - arrivalInMS) / (1000 * 60 * 60 * 24);
+        long differenceInDays = (departureInMS - arrivalInMS) / (MS_PER_DAY);
         int intDifference = (int) differenceInDays;
         return intDifference;
     }
